@@ -7,128 +7,128 @@ using namespace std;
 
 int main()
 {
-	srand(time(0));//ÉèÖÃËæ»úÖÖ×ÓÓëÊ±¼äÏà¹Ø£¬È·±£ÄÜÉú³ÉÍêÈ«Ëæ»úµÄ¸´Êı
+	srand(time(0));//è®¾ç½®éšæœºç§å­ä¸æ—¶é—´ç›¸å…³ï¼Œç¡®ä¿èƒ½ç”Ÿæˆå®Œå…¨éšæœºçš„å¤æ•°
 	double time = 0;
 	double counts = 0;
 	LARGE_INTEGER nFreq;
 	LARGE_INTEGER nBeginTime;
 	LARGE_INTEGER nEndTime;
-	complex* a = new complex[10];//Ëæ»úÉú³ÉÒ»×é¸´Êı
-	Vector<complex>v1(a, 10);//½«Ëæ»úÉú³ÉµÄ¸´Êı¸´ÖÆµ½ÏòÁ¿ÖĞ
-	Vector<complex>v2(a, 10);//½«Ëæ»úÉú³ÉµÄ¸´Êı¸´ÖÆµ½ÁíÒ»¸öÏòÁ¿ÖĞ±¸ÓÃ
-	Vector<complex>v3(a, 10);//ÔÙ¸´ÖÆÒ»¸ö±¸ÓÃqwq
+	complex* a = new complex[10];//éšæœºç”Ÿæˆä¸€ç»„å¤æ•°
+	Vector<complex>v1(a, 10);//å°†éšæœºç”Ÿæˆçš„å¤æ•°å¤åˆ¶åˆ°å‘é‡ä¸­
+	Vector<complex>v2(a, 10);//å°†éšæœºç”Ÿæˆçš„å¤æ•°å¤åˆ¶åˆ°å¦ä¸€ä¸ªå‘é‡ä¸­å¤‡ç”¨
+	Vector<complex>v3(a, 10);//å†å¤åˆ¶ä¸€ä¸ªå¤‡ç”¨qwq
 	int i;
 	//double real,imag;
 	for (i = 0; i < 10; i++) {
 		v1[i].display();
-	}//Êä³ö¸´ÊıÏòÁ¿
+	}//è¾“å‡ºå¤æ•°å‘é‡
 	cout<< endl;
-	v1.unsort(0, 10);//ÖÃÂÒ
-	cout << "ÖÃÂÒºó£º" << endl;
+	v1.unsort(0, 10);//ç½®ä¹±
+	cout << "ç½®ä¹±åï¼š" << endl;
 	for (i = 0; i < 10; i++) {
 		v1[i].display();
-	}//Êä³öÖÃÂÒºóµÄ¸´ÊıÏòÁ¿
+	}//è¾“å‡ºç½®ä¹±åçš„å¤æ•°å‘é‡
 
-	cout << endl << "²éÕÒÊµ²¿Ğé²¿ÏàÍ¬µÄ¸´Êı:" << endl;
-	v1.findcomplex(0, 10);//²éÕÒÊµ²¿ºÍĞé²¿ÏàÍ¬µÄ¸´Êı²¢Êä³ö
+	cout << endl << "æŸ¥æ‰¾å®éƒ¨è™šéƒ¨ç›¸åŒçš„å¤æ•°:" << endl;
+	v1.findcomplex(0, 10);//æŸ¥æ‰¾å®éƒ¨å’Œè™šéƒ¨ç›¸åŒçš„å¤æ•°å¹¶è¾“å‡º
 
-	cout << endl << "×¼±¸²åÈëµÄ¸´Êı£º" << endl;
-	complex insert;//Éú³ÉÒ»¸ö×¼±¸²åÈëµÄ¸´Êı
-	insert.display();//Õ¹Ê¾×¼±¸²åÈëµÄ¸´Êı
-	cout << endl << "²åÈëºóµÄ¸´ÊıÏòÁ¿£º" << endl;
-	v1.insert(2, insert);//ÔÚÏòÁ¿ÖĞÄ³´¦£¨´Ë´¦Îª2£©²åÈëÒ»¸ö¸´Êı
+	cout << endl << "å‡†å¤‡æ’å…¥çš„å¤æ•°ï¼š" << endl;
+	complex insert;//ç”Ÿæˆä¸€ä¸ªå‡†å¤‡æ’å…¥çš„å¤æ•°
+	insert.display();//å±•ç¤ºå‡†å¤‡æ’å…¥çš„å¤æ•°
+	cout << endl << "æ’å…¥åçš„å¤æ•°å‘é‡ï¼š" << endl;
+	v1.insert(2, insert);//åœ¨å‘é‡ä¸­æŸå¤„ï¼ˆæ­¤å¤„ä¸º2ï¼‰æ’å…¥ä¸€ä¸ªå¤æ•°
 	for (i = 0; i < 11; i++) {
 		v1[i].display();
-	}//Êä³ö²åÈëºóµÄ¸´ÊıÏòÁ¿
+	}//è¾“å‡ºæ’å…¥åçš„å¤æ•°å‘é‡
 
-	cout << endl << "Çø¼äÉ¾³ıºóµÄ¸´ÊıÏòÁ¿£º" << endl;
-	v1.remove(1, 3);//É¾³ı¸´ÊıÏòÁ¿Çø¼ä[1£¬3£©
+	cout << endl << "åŒºé—´åˆ é™¤åçš„å¤æ•°å‘é‡ï¼š" << endl;
+	v1.remove(1, 3);//åˆ é™¤å¤æ•°å‘é‡åŒºé—´[1ï¼Œ3ï¼‰
 	for (i = 0; i < 9; i++) {
 		v1[i].display();
-	}//Êä³öÉ¾³ıÇø¼äºóµÄ¸´ÊıÏòÁ¿
+	}//è¾“å‡ºåˆ é™¤åŒºé—´åçš„å¤æ•°å‘é‡
 
-	cout << endl << "É¾³ıµ¥¸öºóµÄ¸´ÊıÏòÁ¿£º" << endl;
-	v1.remove(0);//É¾³ı¸´ÊıÏòÁ¿v1[0]
+	cout << endl << "åˆ é™¤å•ä¸ªåçš„å¤æ•°å‘é‡ï¼š" << endl;
+	v1.remove(0);//åˆ é™¤å¤æ•°å‘é‡v1[0]
 	for (i = 0; i < 8; i++) {
 		v1[i].display();
-	}//Êä³öÉ¾³ıµ¥¸öºóµÄ¸´ÊıÏòÁ¿
+	}//è¾“å‡ºåˆ é™¤å•ä¸ªåçš„å¤æ•°å‘é‡
 
 	int j = v1.deduplicate();
-	cout << endl << "É¾³ıÖØ¸´ÔªËØ£º" << j << "¸ö" << endl << "Î¨Ò»»¯ºóµÄ¸´ÊıÏòÁ¿:" << endl;
+	cout << endl << "åˆ é™¤é‡å¤å…ƒç´ ï¼š" << j << "ä¸ª" << endl << "å”¯ä¸€åŒ–åçš„å¤æ•°å‘é‡:" << endl;
 	for (i = 0; i < 8 - j; i++) {
 		v1[i].display();
-	}//Êä³öÉ¾³ıÖØ¸´ÔªËØºóµÄ¸´ÊıÏòÁ¿
+	}//è¾“å‡ºåˆ é™¤é‡å¤å…ƒç´ åçš„å¤æ•°å‘é‡
 	cout << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	v2.mergeSort(0, 10);//ÂÒĞòÊ±¹é²¢ÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÂÒĞòÊ±¹é²¢ÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	v2.mergeSort(0, 10);//ä¹±åºæ—¶å½’å¹¶æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "ä¹±åºæ—¶å½’å¹¶æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	v3.bubbleSort(0, 10);//ÂÒĞòÊ±ÆğÅİÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÂÒĞòÊ±ÆğÅİÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	v3.bubbleSort(0, 10);//ä¹±åºæ—¶èµ·æ³¡æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "ä¹±åºæ—¶èµ·æ³¡æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	v2.mergeSort(0, 10);//Ë³ĞòÊ±¹é²¢ÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "Ë³ĞòÊ±¹é²¢ÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	v2.mergeSort(0, 10);//é¡ºåºæ—¶å½’å¹¶æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é¡ºåºæ—¶å½’å¹¶æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	v3.bubbleSort(0, 10); //Ë³ĞòÊ±ÆğÅİÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "Ë³ĞòÊ±ÆğÅİÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	v3.bubbleSort(0, 10); //é¡ºåºæ—¶èµ·æ³¡æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é¡ºåºæ—¶èµ·æ³¡æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 
 	for (i = 0; i < 5; i++) {
 		swap(v2[i], v2[9 - i]);
 		swap(v3[i], v3[9 - i]);
-	}//½«¸´ÊıÏòÁ¿ÄæĞò
+	}//å°†å¤æ•°å‘é‡é€†åº
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	v2.mergeSort(0, 10);//ÄæĞòÊ±¹é²¢ÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÄæĞòÊ±¹é²¢ÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	v2.mergeSort(0, 10);//é€†åºæ—¶å½’å¹¶æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é€†åºæ—¶å½’å¹¶æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	v3.bubbleSort(0, 10);//ÄæĞòÊ±ÆğÅİÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÄæĞòÊ±ÆğÅİÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	v3.bubbleSort(0, 10);//é€†åºæ—¶èµ·æ³¡æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é€†åºæ—¶èµ·æ³¡æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
-	//²éÕÒÄ£ÔÚÇø¼ä[m1,m2)ÄÚµÄ¸´Êı
+	//æŸ¥æ‰¾æ¨¡åœ¨åŒºé—´[m1,m2)å†…çš„å¤æ•°
 	int m1, m2;
-	cout << endl<< "ÇëÊäÈëm1£¬m2£º";
+	cout << endl<< "è¯·è¾“å…¥m1ï¼Œm2ï¼š";
 	cin >> m1 >> m2;
-	Vector<complex>v4(a,10);//×ÓÏòÁ¿
+	Vector<complex>v4(a,10);//å­å‘é‡
 	int sum = 0;
 	double num;
 	for ( i = 0; i < 10; i++) {
 		num = v3[i].getmodel();
-		if (num >= m1 && num < m2) {//ÈôÔÚ[m1,m2)Çø¼ä£¬Ôò¸ø×ÓÏòÁ¿°´Ğò¸³Öµ
+		if (num >= m1 && num < m2) {//è‹¥åœ¨[m1,m2)åŒºé—´ï¼Œåˆ™ç»™å­å‘é‡æŒ‰åºèµ‹å€¼
 			v4[sum].givereal(v3[i].getreal());
-			v4[sum].givereal(v3[i].getreal());
+			v4[sum].giveimag(v3[i].getimag());
 			sum++;
 		}
-		else if (num >= m2) {//ÈôÒÑ´óÓÚm2£¬ÔòÍË³ö¸³Öµ
+		else if (num >= m2) {//è‹¥å·²å¤§äºm2ï¼Œåˆ™é€€å‡ºèµ‹å€¼
 			break;
 		}
 	}
-	cout << "²éÕÒºóµÄÏòÁ¿:" << endl;
+	cout << "æŸ¥æ‰¾åçš„å‘é‡:" << endl;
 		for (i = 0; i < sum; i++) {
 		v4[i].display();
-	}//°´ĞòÊä³ö×ÓÏòÁ¿
+	}//æŒ‰åºè¾“å‡ºå­å‘é‡
 		return 0;
 }
