@@ -6,6 +6,8 @@
 #include <vector>
 using namespace std;
 
+//è¿™ä¸ªè®¡ç®—é¢ç§¯çš„ä¸ä¼šç”¨é˜Ÿåˆ—å®ç°ã€‚ã€‚ã€‚
+
 int largestRectangleArea(vector<int>& heights) {
     int res = 0;
     stack<int> s;
@@ -15,7 +17,7 @@ int largestRectangleArea(vector<int>& heights) {
             int h = heights[s.top()];
             s.pop();
             int w = s.empty() ? i : i - s.top() - 1;
-            res = max(res, h * w);//±È½ÏÁ½ÕßÈ¡×î´óÖµ
+            res = max(res, h * w);//æ¯”è¾ƒä¸¤è€…å–æœ€å¤§å€¼
         }
         s.push(i);
     }
@@ -24,17 +26,17 @@ int largestRectangleArea(vector<int>& heights) {
 
 int main() {
     srand(time(0));
-    int s[10];//´´½¨Êı×é´¢´æÃ¿¸öÖùĞÍµÄ¸ß¶È£¬´Ë´¦¶¨Îª10¸öÖùĞÍ
+    int s[10];//åˆ›å»ºæ•°ç»„å‚¨å­˜æ¯ä¸ªæŸ±å‹çš„é«˜åº¦ï¼Œæ­¤å¤„å®šä¸º10ä¸ªæŸ±å‹
     for (int i = 0; i < 10; i++) {
-        cout << "Ã¿¸öÖùĞÍ¸ß¶È£º";
+        cout << "æ¯ä¸ªæŸ±å‹é«˜åº¦ï¼š";
         for (int j = 0; j < 10; j++) {
-            s[j] = rand() % 100;//ÎªÃ¿¸öÖùĞÍ¸³Ëæ»úÖµ
+            s[j] = rand() % 100;//ä¸ºæ¯ä¸ªæŸ±å‹èµ‹éšæœºå€¼
             cout << s[j] << " ";
         }
         cout << endl;
         vector<int> heights = { s[0],s[1],s[2],s[3],s[4],s[5],s[6],s[7],s[8],s[9] };
-        int res = largestRectangleArea(heights);//¼ÆËã×îĞ¡Ãæ»ı
-        cout << res << endl;//Êä³ö×îĞ¡Ãæ»ı
+        int res = largestRectangleArea(heights);//è®¡ç®—æœ€å°é¢ç§¯
+        cout << res << endl;//è¾“å‡ºæœ€å°é¢ç§¯
     }
     return 0;
 }
