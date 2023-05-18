@@ -14,27 +14,27 @@ typedef int Rank;
 
 bool bubble(int array1[], int n) {
     int i = 0;
-    bool sorted = true;//ÕûÌåÓĞĞò±êÖ¾
-    while (++i < n)//×Ô×óÏòÓÒ£¬ÖğÒ»¼ì²é¸÷¶ÔÏàÁÚÔªËØ
-        if (array1[i - 1] > array1[i]) {//ÈôÄæĞò£¬ÔòÒâÎ¶×ÅÉĞÎ´ÕûÌåÓĞĞò£¬²¢ĞèÒªÍ¨¹ı½»»»Ê¹¾Ö²¿ÓĞĞò
+    bool sorted = true;//æ•´ä½“æœ‰åºæ ‡å¿—
+    while (++i < n)//è‡ªå·¦å‘å³ï¼Œé€ä¸€æ£€æŸ¥å„å¯¹ç›¸é‚»å…ƒç´ 
+        if (array1[i - 1] > array1[i]) {//è‹¥é€†åºï¼Œåˆ™æ„å‘³ç€å°šæœªæ•´ä½“æœ‰åºï¼Œå¹¶éœ€è¦é€šè¿‡äº¤æ¢ä½¿å±€éƒ¨æœ‰åº
             sorted = false;
             swap(array1[i - 1], array1[i]);
         }
-    return sorted;//·µ»ØÓĞĞò±êÖ¾
-} //É¨Ãè½»»»
+    return sorted;//è¿”å›æœ‰åºæ ‡å¿—
+} //æ‰«æäº¤æ¢
 
 void bubbleSort(int array[], int n) {
     while (!bubble(array, n--));
-} //ÆğÅİÅÅĞòËã·¨
+} //èµ·æ³¡æ’åºç®—æ³•
 
 
 
 void merge(int array[],int lo, int mi, int hi) { // lo < mi < hi
-    int* A = array + lo; //ºÏ²¢ºóµÄÓĞĞòÏòÁ¿A[0, hi - lo) = _elem[lo, hi)
-    int lb = mi - lo; int* B = new int[lb]; //Ç°×ÓÏòÁ¿B[0, lb) <-- _elem[lo, mi)
-    for (Rank i = 0; i < lb; B[i] = A[i++]); //¸´ÖÆÇ°×ÓÏòÁ¿
-    int lc = hi - mi; int* C = array + mi; //ºó×ÓÏòÁ¿C[0, lc) = _elem[mi, hi)
-    for (Rank i = 0, j = 0, k = 0; (j < lb) || (k < lc);) {//B[j]ºÍC[k]ÖĞµÄĞ¡ÕßĞøÖÁAÄ©Î²
+    int* A = array + lo; //åˆå¹¶åçš„æœ‰åºå‘é‡A[0, hi - lo) = _elem[lo, hi)
+    int lb = mi - lo; int* B = new int[lb]; //å‰å­å‘é‡B[0, lb) <-- _elem[lo, mi)
+    for (Rank i = 0; i < lb; B[i] = A[i++]); //å¤åˆ¶å‰å­å‘é‡
+    int lc = hi - mi; int* C = array + mi; //åå­å‘é‡C[0, lc) = _elem[mi, hi)
+    for (Rank i = 0, j = 0, k = 0; (j < lb) || (k < lc);) {//B[j]å’ŒC[k]ä¸­çš„å°è€…ç»­è‡³Aæœ«å°¾
         if ((j < lb) && (!(k < lc) || (B[j] <= C[k]))) {
             A[i++] = B[j++];
         }
@@ -42,18 +42,18 @@ void merge(int array[],int lo, int mi, int hi) { // lo < mi < hi
             A[i++] = C[k++];
         }
     }
-    delete[] B; //ÊÍ·ÅÁÙÊ±¿Õ¼ä
-} //¹é²¢Ëã·¨
+    delete[] B; //é‡Šæ”¾ä¸´æ—¶ç©ºé—´
+} //å½’å¹¶ç®—æ³•
 
 void mergeSort(int array[],int lo,int hi) {
-    if (hi-lo < 2) return; //µ¥ÔªËØÇø¼ä×ÔÈ»ÓĞĞò£¬·ñÔò...
-    int mi = (lo + hi) / 2; //ÒÔÖĞµãÎª½ç
-    mergeSort(array,lo, mi); mergeSort(array,mi, hi); //Ç°×º¡¢ºó×º·Ö±ğÅÅĞò
-    merge(array,lo, mi, hi); //¹é²¢
-} //¹é²¢ÅÅĞòËã·¨
+    if (hi-lo < 2) return; //å•å…ƒç´ åŒºé—´è‡ªç„¶æœ‰åºï¼Œå¦åˆ™...
+    int mi = (lo + hi) / 2; //ä»¥ä¸­ç‚¹ä¸ºç•Œ
+    mergeSort(array,lo, mi); mergeSort(array,mi, hi); //å‰ç¼€ã€åç¼€åˆ†åˆ«æ’åº
+    merge(array,lo, mi, hi); //å½’å¹¶
+} //å½’å¹¶æ’åºç®—æ³•
 
 
-void insertionSort(int array[], int n) {//²åÈëÅÅĞò
+void insertionSort(int array[], int n) {//æ’å…¥æ’åº
 	int i, key, j;
 	for (i = 1; i < n; i++) {
 		key = array[i];
@@ -67,18 +67,18 @@ void insertionSort(int array[], int n) {//²åÈëÅÅĞò
 	}
 }
 
-void selectionSort(int arr[], int n) {//Ñ¡ÔñÅÅĞò
+void selectionSort(int array[], int n) {//é€‰æ‹©æ’åº
 	int i, j, min_idx;
 	for (i = 0; i < n - 1; i++) {
 		min_idx = i;
 		for (j = i + 1; j < n; j++)
-			if (arr[j] < arr[min_idx])
+			if (array[j] < array[min_idx])
 				min_idx = j;
-		swap(arr[min_idx], arr[i]);
+		swap(array[min_idx], array[i]);
 	}
 }
 
-void quickSort(int array[], int lo, int hi) {
+void quickSort(int array[], int lo, int hi) {//å¿«é€Ÿæ’åº
 	if (lo < hi) {
 		int pivot = array[hi];
 		int i = lo - 1;
@@ -97,96 +97,97 @@ void quickSort(int array[], int lo, int hi) {
 
 int main()
 {
-    srand(time(0));//ÉèÖÃËæ»úÖÖ×ÓÓëÊ±¼äÏà¹Ø£¬È·±£ÄÜÉú³ÉÍêÈ«Ëæ»úµÄ¸´Êı
+    srand(time(0));//è®¾ç½®éšæœºç§å­ä¸æ—¶é—´ç›¸å…³ï¼Œç¡®ä¿èƒ½ç”Ÿæˆå®Œå…¨éšæœºçš„å¤æ•°
     double time = 0;
     double counts = 0;
     LARGE_INTEGER nFreq;
     LARGE_INTEGER nBeginTime;
     LARGE_INTEGER nEndTime;
-    int nn1[10],nn2[10],nn3[10],nn4[10],nn5[10];//Ëæ»úÉú³ÉÒ»×éÊı
+    int nn1[10],nn2[10],nn3[10],nn4[10],nn5[10];//éšæœºç”Ÿæˆä¸€ç»„æ•°
+	
     for (int i = 0; i < 10; i++) {
         nn1[i] = rand() % 100;
         nn2[i] = nn1[i];
 		nn3[i] = nn2[i];
 		nn4[i] = nn2[i];
 		nn5[i] = nn2[i];
-    }
+    }//èµ‹å€¼
 
-	cout << "Êı×é:";
+	cout << "æ•°ç»„:";
 	for (int i = 0; i < 10; i++) {
 		cout << nn1[i] << " ";
 	}
 
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	mergeSort(nn1,0, 10);//ÂÒĞòÊ±¹é²¢ÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout <<endl<< "ÂÒĞòÊ±¹é²¢ÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	mergeSort(nn1,0, 10);//ä¹±åºæ—¶å½’å¹¶æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout <<endl<< "ä¹±åºæ—¶å½’å¹¶æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	bubbleSort(nn2, 10);//ÂÒĞòÊ±ÆğÅİÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÂÒĞòÊ±ÆğÅİÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	bubbleSort(nn2, 10);//ä¹±åºæ—¶èµ·æ³¡æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "ä¹±åºæ—¶èµ·æ³¡æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	insertionSort(nn3, 10);//ÂÒĞòÊ±²åÈëÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout <<"ÂÒĞòÊ±²åÈëÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	insertionSort(nn3, 10);//ä¹±åºæ—¶æ’å…¥æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout <<"ä¹±åºæ—¶æ’å…¥æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	selectionSort(nn4, 10);//ÂÒĞòÊ±Ñ¡ÔñÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÂÒĞòÊ±Ñ¡ÔñÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	selectionSort(nn4, 10);//ä¹±åºæ—¶é€‰æ‹©æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "ä¹±åºæ—¶é€‰æ‹©æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	quickSort(nn5,0,10);//ÂÒĞòÊ±¿ìËÙÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÂÒĞòÊ±¿ìËÙÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	quickSort(nn5,0,10);//ä¹±åºæ—¶å¿«é€Ÿæ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "ä¹±åºæ—¶å¿«é€Ÿæ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	mergeSort(nn1,0, 10);//Ë³ĞòÊ±¹é²¢ÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "Ë³ĞòÊ±¹é²¢ÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	mergeSort(nn1,0, 10);//é¡ºåºæ—¶å½’å¹¶æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é¡ºåºæ—¶å½’å¹¶æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	bubbleSort(nn2, 10); //Ë³ĞòÊ±ÆğÅİÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "Ë³ĞòÊ±ÆğÅİÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	bubbleSort(nn2, 10); //é¡ºåºæ—¶èµ·æ³¡æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é¡ºåºæ—¶èµ·æ³¡æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	insertionSort(nn3, 10); //Ë³ĞòÊ±²åÈëÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "Ë³ĞòÊ±²åÈëÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	insertionSort(nn3, 10); //é¡ºåºæ—¶æ’å…¥æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é¡ºåºæ—¶æ’å…¥æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	selectionSort(nn4, 10);//Ë³ĞòÊ±Ñ¡ÔñÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "Ë³ĞòÊ±Ñ¡ÔñÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	selectionSort(nn4, 10);//é¡ºåºæ—¶é€‰æ‹©æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é¡ºåºæ—¶é€‰æ‹©æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	quickSort(nn5,0,10);//Ë³ĞòÊ±¿ìËÙÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "Ë³ĞòÊ±¿ìËÙÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	quickSort(nn5,0,10);//é¡ºåºæ—¶å¿«é€Ÿæ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é¡ºåºæ—¶å¿«é€Ÿæ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl << endl;
 
 	for (int i = 0; i < 5; i++) {
 		swap(nn1[i], nn1[9 - i]);
@@ -194,40 +195,40 @@ int main()
 		swap(nn3[i], nn3[9 - i]);
 		swap(nn4[i], nn4[9 - i]);
 		swap(nn5[i], nn5[9 - i]);
-	}//½«¸´ÊıÏòÁ¿ÄæĞò
+	}//å°†æ•°ç»„é€†åº
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	mergeSort(nn1,0, 10);//ÄæĞòÊ±¹é²¢ÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÄæĞòÊ±¹é²¢ÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	mergeSort(nn1,0, 10);//é€†åºæ—¶å½’å¹¶æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é€†åºæ—¶å½’å¹¶æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	bubbleSort(nn2, 10);//ÄæĞòÊ±ÆğÅİÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÄæĞòÊ±ÆğÅİÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	bubbleSort(nn2, 10);//é€†åºæ—¶èµ·æ³¡æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é€†åºæ—¶èµ·æ³¡æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	insertionSort(nn3, 10);//ÄæĞòÊ±ÆğÅİÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÄæĞòÊ±²åÈëÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	insertionSort(nn3, 10);//é€†åºæ—¶èµ·æ³¡æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é€†åºæ—¶æ’å…¥æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	selectionSort(nn4, 10);//ÄæĞòÊ±Ñ¡ÔñÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÄæĞòÊ±Ñ¡ÔñÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	selectionSort(nn4, 10);//é€†åºæ—¶é€‰æ‹©æ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é€†åºæ—¶é€‰æ‹©æ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 
 	QueryPerformanceFrequency(&nFreq);
-	QueryPerformanceCounter(&nBeginTime);//¿ªÊ¼¼ÆÊ±  
-	quickSort(nn5,0, 10);//ÄæĞòÊ±¿ìËÙÅÅĞò
-	QueryPerformanceCounter(&nEndTime);//Í£Ö¹¼ÆÊ±  
-	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//¼ÆËã³ÌĞòÖ´ĞĞÊ±¼äµ¥Î»Îªs  
-	cout << "ÄæĞòÊ±¿ìËÙÅÅĞòÔËĞĞÊ±¼ä£º" << time * 1000 << "ms" << endl;
+	QueryPerformanceCounter(&nBeginTime);//å¼€å§‹è®¡æ—¶  
+	quickSort(nn5,0, 10);//é€†åºæ—¶å¿«é€Ÿæ’åº
+	QueryPerformanceCounter(&nEndTime);//åœæ­¢è®¡æ—¶  
+	time = (double)(nEndTime.QuadPart - nBeginTime.QuadPart) / (double)nFreq.QuadPart;//è®¡ç®—ç¨‹åºæ‰§è¡Œæ—¶é—´å•ä½ä¸ºs  
+	cout << "é€†åºæ—¶å¿«é€Ÿæ’åºè¿è¡Œæ—¶é—´ï¼š" << time * 1000 << "ms" << endl;
 }
